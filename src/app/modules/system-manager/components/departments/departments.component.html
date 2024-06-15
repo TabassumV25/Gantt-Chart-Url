@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <h4 class="page-title flex-grow-1 labelStyles">Departments</h4>
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="visibleSidebar = true">+ New
+        department</button>
+</div>
+<div class="gx-15">
+    <div class="container-fluid mb-5">
+
+        <div class="row">
+            <div class="col mt-2 table-landing ">
+
+
+                <p-table #dt dataKey="id" [value]="departmentsDataSource" [paginator]="true" [rows]="10"
+                    [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
+                    [globalFilterFields]="['department', 'initiatedBy','date']" tableStyleClass="table table-striped">
+                    <ng-template pTemplate="caption">
+                        <div class="d-flex justify-content-end">
+                            <span class="p-input-icon-left ml-auto search-block">
+                                <i class="fa fa-search search-icon"></i>
+                                <input pInputText type="text" class="form-control rounded-pill search-text"
+                                    (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width:140px;"  class="lh-lg">S.No</th>
+
+                            <th pSortableColumn="department" style="width:40%">Department<p-columnFilter type="text"
+                                    field="department" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="initiatedBy" style="width:40%">Initiated By <p-columnFilter type="text"
+                                    field="initiatedBy" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="initiatedOn" style="width:40%">Initiated On <p-columnFilter type="date"
+                                    field="date" display="menu"></p-columnFilter> </th>
+
+
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-departments let-i="rowIndex" #templatesTable>
+                        <tr>
+                            <td>{{i+1}}</td>
+
+                            <td>{{departments.department}}</td>
+                            <td>{{departments.initiatedBy}}</td>
+                            <td>{{departments.date | date: 'MM/dd/yyyy'}}</td>
+
+
+                        </tr>
+
+                    </ng-template>
+                </p-table>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">New Department </h5>
+            <a class="p-2" (click)="closeNavBar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <form [formGroup]="regDepartmentsForm!" (ngSubmit)="regDepartments()">
+        <div class="d-flex flex-column py-3 px-4">
+            <div class="form-group row">
+                <label for="departmentName" class="col-md-4 col-form-label">Department Name</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" name="departmentName" formControlName="departmentName" />
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="departmentCode" class="col-md-4 col-form-label">Department Code</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" name="departmentCode" formControlName="departmentCode" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <p-toast></p-toast>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-default rounded-pill me-3" (click)="closeNavBar()">Cancel</button>
+
+        <button type="button" class="btn btn-primary rounded-pill me-2" (click)="regDepartments()">Submit</button>
+    </div>
+</p-sidebar>

@@ -1,0 +1,32 @@
+[
+    {
+      "id": "GR001",
+      "groupName": "Quality Control",
+      "initiatedBy": "John Doe",
+      "date": "2023-05-17"
+      
+    },
+    {
+      "id": "GR002",
+      "groupName": "Operations",
+      "initiatedBy": "Jane Smith",
+      "date": "2023-05-18"
+    
+    },
+    {
+      "id": "GR003",
+      "groupName": "Finance",
+      "initiatedBy": "Alice Johnson",
+      "date": "2023-05-19"
+      
+    },
+    {
+      "id": "GR004",
+      "groupName": "Human Resources",
+      "initiatedBy": "Bob Williams",
+      "date": "2023-05-20"
+      
+    }
+    
+  ]
+  

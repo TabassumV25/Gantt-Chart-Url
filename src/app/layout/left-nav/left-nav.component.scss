@@ -1,0 +1,104 @@
+@import "../../../theme.scss";
+// .toggle-nav {
+//   position: fixed;
+//   top: 15px;
+//   left: 15px;
+// }
+
+.left-nav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background-color: $white;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  border-right: 1px solid #ccc;
+
+  .navbar-nav {
+    width: 100%;
+    list-style: none;
+    margin-bottom: 15px;
+
+    li {
+      .nav-link {
+        color: $heading-color;
+        // border-bottom: 1px solid darken($color: $left-nav-bg, $amount: 2);
+        font-weight: 500;
+        padding: 8px 15px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        i {
+          font-size: 14px;
+          margin-right: 8px;
+          color: $heading-color;
+        }
+
+        .fas {
+          font-size: 13px;
+        }
+
+        label {
+          width: 100%;
+          cursor: pointer;
+          font-weight: 400;
+        }
+
+        span {
+          color: #6d6d8c;
+
+          .bi {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 10px;
+            color: #6d6d8c;
+          }
+        }
+      }
+
+      .nav-link-tagline {
+        padding: 5px 10px;
+        label {
+          font-size: 10px;
+          text-transform: uppercase;
+          // color: $secondary-color;
+          color: #a5a5a5;
+          font-weight: 400;
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+.left-nav.expanded {
+  transform: translateX(0);
+}
+
+ul li {
+  list-style: none;
+}
+
+.list-dashed {
+  position: relative;
+  &::before {
+    content: "";
+    width: 1px;
+    height: calc(100% - 20px);
+    top: 4px;
+    bottom: 0;
+    left: 22px;
+    border: 1px dashed #ddd;
+    position: absolute;
+  }
+}
+
+
+ul:first-child>li{
+  margin-bottom: 20px;
+}

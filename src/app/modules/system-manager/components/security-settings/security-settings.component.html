@@ -1,0 +1,134 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+  <a class="me-2"> <i class="fa-solid fa-arrow-left back-icon m-l-3"></i></a>
+  <h4 class="page-title flex-grow-1 labelStyles">
+    Security Settings
+  </h4>
+</div>
+<div class="px-4 py-4">
+  <div class="row">
+    <div class="col">
+      
+      <form [formGroup]="securitySettingsForm!" (ngSubmit)="saveSecuritySettings()">
+
+        <div class="p-5 bg-white shadow-dark rounded-2">
+
+          <div class="form-group row">
+            <label for="minUserIdLength" class="col-sm-12 col-md-3 col-form-label">Minimum User ID Length</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="minUserIdLength" formControlName="minUserIdLength">
+                <div class="input-group-text">Characters</div>
+              </div>
+              <div *ngIf="securitySettingsForm.get('minUserIdLength')?.invalid && (securitySettingsForm.get('minUserIdLength')?.dirty || securitySettingsForm.get('minUserIdLength')?.touched)">
+                <div class="alert alert-danger mt-1" role="alert">
+                  {{validationMessages.minUserIdLength.required}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="minPasswordLength" class="col-sm-12 col-md-3 col-form-label">Minimum Password Length</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="minPasswordLength" formControlName="minPasswordLength">
+                <div class="input-group-text">Characters</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="maxPasswordTenure" class="col-sm-12 col-md-3 col-form-label">Maximum Tenure of Password </label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="maxPasswordTenure" formControlName="maxPasswordTenure">
+                <div class="input-group-text">Days</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="passwordExpiryAlert" class="col-sm-12 col-md-3 col-form-label">Password Expiry Alert</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="passwordExpiryAlert"
+                  formControlName="passwordExpiryAlert">
+                <div class="input-group-text">Days before</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="retainPasswordHistory" class="col-sm-12 col-md-3 col-form-label">Retain History of Last Passwords
+            </label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="retainPasswordHistory"
+                  formControlName="retainPasswordHistory">
+                <div class="input-group-text">Passwords before</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="passwordComplexity" class="col-sm-12 col-md-3 col-form-label">Complexity of Password</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="passwordComplexityLow" value="low"
+                  formControlName="passwordComplexity">
+                <label class="form-check-label" for="passwordComplexityLow">Low</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="passwordComplexityMedium" value="medium"
+                  formControlName="passwordComplexity">
+                <label class="form-check-label" for="passwordComplexityMedium">Medium</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="passwordComplexityHigh" value="high"
+                  formControlName="passwordComplexity">
+                <label class="form-check-label" for="passwordComplexityHigh">High</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="lockoutAfter" class="col-sm-12 col-md-3 col-form-label">Account will Lockout after</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="lockoutAfter" formControlName="lockoutAfter">
+                <div class="input-group-text">Consecutive Invalid Attempts</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="sessionTimeout" class="col-sm-12 col-md-3 col-form-label">User Name & Password will be asked
+              after</label>
+            <div class="col-sm-10 col-md-4">
+              <div class="input-group">
+                <input type="number" class="form-control" id="sessionTimeout" formControlName="sessionTimeout">
+                <div class="input-group-text">Minutes of Idle Session</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="remarks" class="col-sm-12 col-md-3 col-form-label">Remark(s)/Reason(s)</label>
+            <div class="col-sm-10 col-md-4">
+              <textarea class="form-control" id="remarks" rows="3"></textarea>
+            </div>
+          </div>
+          
+        </div>
+
+
+        <div class="d-flex mt-4 justify-content-end">
+          <button type="button" class="btn btn-default rounded-pill me-3" (click)="cancelClick()">Cancel</button>
+          <button type="button" class="btn btn-primary rounded-pill me-3"
+            (click)="saveSecuritySettings()">Submit</button>
+        </div>
+      </form>
+      <p-toast></p-toast>
+    </div>
+  </div>
+</div>
