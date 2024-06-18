@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-schedule',
@@ -9,11 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProjectScheduleComponent {
   projectScheduledForm!: FormGroup;
   selectedtaskDetails:any="Analyticals";
- 
+  dynamicArray:any[]= [];
+  public baseLineForms!:FormGroup;
+  details!:FormArray;
 
-  constructor(private fb:FormBuilder, private cdr: ChangeDetectorRef){
+  constructor(private fb:FormBuilder, private router: Router,private cdr: ChangeDetectorRef){
 
   }
+ 
   ngOnInit():void{
     this.projectScheduledForm = this.fb.group({
       projectScheduleName: ['', Validators.required],
@@ -23,7 +27,9 @@ export class ProjectScheduleComponent {
       endDate: ['', Validators.required],
       duration: ['', Validators.required],
     });
+  this.dynamicArray.push({objective: '', plannedStartDate: '',plannedEndDate:'',durationDays:'',delete:'X'})
   }
+  
   submitProjectSchdule(){
 
   }
@@ -32,9 +38,21 @@ export class ProjectScheduleComponent {
     { label: 'Research and Development', value: 'Research and Development' }
   
   ];
+  addRows(){
+    this.dynamicArray.push({objective: '', plannedStartDate: '',plannedEndDate:'',durationDays:'',delete:'X'});
+    this.cdr.detectChanges();
+  }
+
+  deleteRows(index:any){
+    this.dynamicArray.splice(index, 1);
+  }
+  
   selectTask(value: any) {
     this.selectedtaskDetails= value;
     console.log(value);
     this.cdr.detectChanges();
+  }
+  backToProjects(){
+    this.router.navigateByUrl('/projects');
   }
 }

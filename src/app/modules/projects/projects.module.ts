@@ -19,6 +19,7 @@ import { ProjectRegFlowComponent } from './project-reg-flow/project-reg-flow.com
 import { StepsModule } from 'primeng/steps';
 import { TagModule } from 'primeng/tag';
 import { GanttchartComponent } from './components/ganttchart/ganttchart.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -33,6 +34,7 @@ import { GanttchartComponent } from './components/ganttchart/ganttchart.componen
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     ProjectsRoutingModule,
     CommonModule,
     ReactiveFormsModule,

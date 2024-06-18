@@ -80,8 +80,11 @@
    
         <div class="row">
             <div class="col mt-2 table-landing ">
+             
                 <table class="table table-bordered caption-top">
-                  <caption>Analyticals</caption>
+                  <caption>Analyticals 
+                    <button type="button" class="btn  btn-objective btn-primary"(click)="addRows()">+Add Objective</button>
+                  </caption>
                     <thead>
                       <tr>
                         <th scope="col">S.No</th>
@@ -89,40 +92,39 @@
                         <th scope="col">Planned Start Date</th>
                         <th scope="col">Planned End Date</th>
                         <th scope="col">Duration (Days)</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                        <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
-                      </tr>
+                          <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+                            <td scope="row">{{i+1}}</td>
+                            <td><input class="form-control form-control-sm"
+                              name="{{dynamic.objective}}" [(ngModel)]="dynamic.objective"
+                               type="text"aria-label=".form-control-sm example"></td>
+                            <td><input class="form-control form-control-sm"
+                              name="{{dynamic.plannedStartDate}}" [(ngModel)]="dynamic.plannedStartDate"
+                               type="date"aria-label=".form-control-sm example"></td>
+                            <td><input class="form-control form-control-sm" 
+                              name="{{dynamic.plannedEndDate}}" [(ngModel)]="dynamic.plannedEndDate"
+                              type="date"aria-label=".form-control-sm example"></td>
+                              <td><input class="form-control form-control-sm" 
+                                name="{{dynamic.durationDays}}" [(ngModel)]="dynamic.durationDays"
+                                type="text"aria-label=".form-control-sm example"></td>
+                                <td><span name="dynamic.delete" [(ngModel)]="dynamic.delete"(click)="deleteRows(i)">X</span></td>
+                          </tr>
                     </tbody>
                   </table>
+               
                 </div>
                 
                 </div>
-                <div class="row" >
+                <div class="row mt-4" >
                   <div class="col mt-2 table-landing ">
                       <table class="table table-bordered caption-top">
-                        <caption>Research and Development</caption>
-                          <thead>
+                        <caption>Research and Development
+                        <button type="button" class="btn  btn-objective btn-primary"(click)="addRows()">+Add Objective</button>
+                      </caption>
+                        <thead>
                             <tr>
                               <th scope="col">S.No</th>
                               <th scope="col">Objective</th>
@@ -132,27 +134,25 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
+                            <tr *ngFor="let dynamic of dynamicArray; let i = index;">
+                              <td scope="row">{{i+1}}</td>
+                              <td><input class="form-control form-control-sm"
+                                name="{{dynamic.objective}}" [(ngModel)]="dynamic.objective"
+                                 type="text"aria-label=".form-control-sm example"></td>
+                              <td><input class="form-control form-control-sm"
+                                name="{{dynamic.plannedStartDate}}" [(ngModel)]="dynamic.plannedStartDate"
+                                 type="date"aria-label=".form-control-sm example"></td>
+                              <td><input class="form-control form-control-sm" 
+                                name="{{dynamic.plannedEndDate}}" [(ngModel)]="dynamic.plannedEndDate"
+                                type="date"aria-label=".form-control-sm example"></td>
+                                <td><input class="form-control form-control-sm" 
+                                  name="{{dynamic.durationDays}}" [(ngModel)]="dynamic.durationDays"
+                                  type="text"aria-label=".form-control-sm example"></td>
+                                  <td><span name="dynamic.delete" [(ngModel)]="dynamic.delete"(click)="deleteRows(i)">X</span></td>
                             </tr>
+                           
                             <tr>
-                              <th scope="row">2</th>
-                              <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td> <input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"> </td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="date"aria-label=".form-control-sm example"></td>
-                              <td><input class="form-control form-control-sm" type="text"aria-label=".form-control-sm example"></td>
-                            </tr>
+                             
                           </tbody>
                         </table>
                       </div>
