@@ -27,7 +27,7 @@ export class HomePageComponent implements OnInit{
     },
     {
       label: 'Gantt Chart',
-      path: '',
+      path: '/gantt-chart',
       isOpen: false,
       isActive: false,
       iconClass: 'fa-solid fa-chart-gantt'
@@ -51,6 +51,11 @@ export class HomePageComponent implements OnInit{
   }
 
   navItemClick(item: NavItem) {
-   this.router.navigate(['/projects']);
+    if (item.children && item.children.length > 0) {
+      this.currentItems = item.children
+    }
+    else {
+      this.router.navigate([item.path]);
+    }
   }
 }

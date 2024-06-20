@@ -16,7 +16,7 @@
             <label for="minUserIdLength" class="col-sm-12 col-md-3 col-form-label">Minimum User ID Length</label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="minUserIdLength" formControlName="minUserIdLength">
+                <input type="number" min="0" class="form-control" id="minUserIdLength" formControlName="minUserIdLength">
                 <div class="input-group-text">Characters</div>
               </div>
               <div *ngIf="securitySettingsForm.get('minUserIdLength')?.invalid && (securitySettingsForm.get('minUserIdLength')?.dirty || securitySettingsForm.get('minUserIdLength')?.touched)">
@@ -31,7 +31,7 @@
             <label for="minPasswordLength" class="col-sm-12 col-md-3 col-form-label">Minimum Password Length</label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="minPasswordLength" formControlName="minPasswordLength">
+                <input type="number" min="0" class="form-control" id="minPasswordLength" formControlName="minPasswordLength">
                 <div class="input-group-text">Characters</div>
               </div>
             </div>
@@ -41,7 +41,7 @@
             <label for="maxPasswordTenure" class="col-sm-12 col-md-3 col-form-label">Maximum Tenure of Password </label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="maxPasswordTenure" formControlName="maxPasswordTenure">
+                <input type="number" min="0" class="form-control" id="maxPasswordTenure" formControlName="maxPasswordTenure">
                 <div class="input-group-text">Days</div>
               </div>
             </div>
@@ -51,7 +51,7 @@
             <label for="passwordExpiryAlert" class="col-sm-12 col-md-3 col-form-label">Password Expiry Alert</label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="passwordExpiryAlert"
+                <input type="number" min="0" class="form-control" id="passwordExpiryAlert"
                   formControlName="passwordExpiryAlert">
                 <div class="input-group-text">Days before</div>
               </div>
@@ -63,7 +63,7 @@
             </label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="retainPasswordHistory"
+                <input type="number" min="0" class="form-control" id="retainPasswordHistory"
                   formControlName="retainPasswordHistory">
                 <div class="input-group-text">Passwords before</div>
               </div>
@@ -95,7 +95,7 @@
             <label for="lockoutAfter" class="col-sm-12 col-md-3 col-form-label">Account will Lockout after</label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="lockoutAfter" formControlName="lockoutAfter">
+                <input type="number" min="0" class="form-control" id="lockoutAfter" formControlName="lockoutAfter">
                 <div class="input-group-text">Consecutive Invalid Attempts</div>
               </div>
             </div>
@@ -106,7 +106,7 @@
               after</label>
             <div class="col-sm-10 col-md-4">
               <div class="input-group">
-                <input type="number" class="form-control" id="sessionTimeout" formControlName="sessionTimeout">
+                <input type="number" min="0" class="form-control" id="sessionTimeout" formControlName="sessionTimeout">
                 <div class="input-group-text">Minutes of Idle Session</div>
               </div>
             </div>
