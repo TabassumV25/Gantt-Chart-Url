@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gant-chart",
+            "outputPath": "dist/gantChart",
             "baseHref": "/Gantt-Chart-Url/",
             "index": "src/index.html",
             "main": "src/main.ts",
