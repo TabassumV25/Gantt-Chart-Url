@@ -14,7 +14,7 @@ export class LoginService {
   isLoggedIn(): boolean {  
     console.log('log servcice');
   
-    return localStorage.getItem(AUTH_STORAGE_KEY) === 'true';
+    return localStorage.getItem(AUTH_STORAGE_KEY) ==='true';
   }
 
   updateLoginStatus(status: boolean) {
