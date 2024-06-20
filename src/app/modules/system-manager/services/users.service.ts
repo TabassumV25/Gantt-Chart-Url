@@ -12,5 +12,8 @@ export class UsersService {
   getUserActData(): Observable<any> {
     return this.http.get('assets/json/SystemManager/userActivation.json');
   }
+  getUserStatData(): Observable<any> {
+    return this.http.get('assets/json/SystemManager/userStatus.json');
+  }
   constructor(private http: HttpClient) { }
 }

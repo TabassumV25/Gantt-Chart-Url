@@ -7,7 +7,7 @@ export interface User{
     date:string | Date,
     
 }
-export interface RegUser{
+export interface ModifyUser{
     userName?:string;
     userId?:string,
     role?:string,
@@ -15,6 +15,18 @@ export interface RegUser{
     department?:string,
     employeeId?:string,
     email?:string
+
+}
+export interface RegisterUser{
+    userName?:string;
+    userId?:string,
+    role?:string,
+    category?:string,
+    department?:string,
+    employeeId?:string,
+    email?:string,
+    passwordAlloted?:string,
+    retypePassword?:string
 
 }
 export interface newUserActivation{

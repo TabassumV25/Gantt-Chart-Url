@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
     <h4 class="page-title flex-grow-1 labelStyles">Users</h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="visibleSidebar = true">+ Add
+    <button type="button" class="btn btn-create rounded-pill initiative" (click)=" visibleSidebar= true" >+ Add
         User</button>
 </div>
 <div class="gx-15">
@@ -39,19 +39,7 @@
                                     field="initiatedby" display="menu"></p-columnFilter></th>
                             <th pSortableColumn="InitiatedOn">Initiated On <p-columnFilter type="date" field="date"
                                     display="menu"></p-columnFilter> </th>
-                            <th pSortableColumn="status">Status
-                                <p-columnFilter field="status" matchMode="equals" display="menu" [showMenu]="true">
-                                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                                        <p-dropdown [ngModel]="value" [options]="status"
-                                            (onChange)="filter($event.value)" placeholder="Any">
-                                            <ng-template let-option pTemplate="item">
-                                                <span
-                                                    [class]="'customer-badge status-' + option.value">{{option.label}}</span>
-                                            </ng-template>
-                                        </p-dropdown>
-                                    </ng-template>
-                                </p-columnFilter>
-                            </th>
+                           
                             <th >Actions</th>
 
                         </tr>
@@ -66,13 +54,7 @@
                             <td>{{modifyUser.department}}</td>
                             <td>{{modifyUser.initiatedBy}}</td>
                             <td>{{modifyUser.date | date: 'MM/dd/yyyy'}}</td>
-                            <td><span role="button" tabindex="0" pInputText pTooltip="Change Status"
-                                    tooltipPosition="top" class="status-dot rounded-pill " [ngClass]="{'status-active':modifyUser.status==='Active',
-                                    'status-inactive':modifyUser.status ==='Inactive'}"
-                                    (click)="visibleSidebar2 = true;openFlyout(i)">{{modifyUser.status}}
-                                </span>
-
-                            </td>
+                          
                             <td class="text-center">
 
                                 <a class="me-3" pInputText pTooltip="Edit" tooltipPosition="top" (click)="visibleSidebar3 = true">
@@ -109,7 +91,7 @@
 
         </div>
     </div>
-    <form [formGroup]="modifyUserForm!" (ngSubmit)="regModifyUser()">
+    <form [formGroup]="registerUserForm!" (ngSubmit)="regUser()">
         <div class="d-flex flex-column py-3 px-4">
 
             <div class="form-group row">
@@ -141,10 +123,12 @@
 
             <div class="form-group row">
                 <label for="department" class="col-md-4 col-form-label">Department</label>
-                <div class="col-md-7">
-                    <input class="form-control" rows="4" formControlName="department" />
-
-
+                <div class="col-md-7  ">
+                    <select name="status" class="form-select" (change)="selectDepartment($event)" formControlName="department">
+                        <option *ngFor="let selectedDepartmentDetails of departmentDetails" [value]="selectedDepartmentDetails.code">
+                            {{selectedDepartmentDetails.name}}
+                        </option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row">
@@ -163,6 +147,22 @@
 
                 </div>
             </div>
+            <div class="form-group row">
+                <label for="passwordAlloted" class="col-md-4 col-form-label">Password Alloted</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control" rows="4" formControlName="passwordAlloted" />
+
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="retypePassword" class="col-md-4 col-form-label">Retype Password</label>
+                <div class="col-md-7">
+                    <input type="text" class="form-control" rows="4" formControlName="retypePassword" />
+
+
+                </div>
+            </div>
 
 
         </div>
@@ -172,47 +172,11 @@
     <div class="d-flex justify-content-end mt-4">
         <button type="button" class="btn btn-default rounded-pill me-3" (click)="closeNavBar()">Cancel</button>
 
-        <button type="button" class="btn btn-primary rounded-pill me-2" (click)="regModifyUser()">Submit</button>
+        <button type="button" class="btn btn-primary rounded-pill me-2" (click)="regUser()">Submit</button>
     </div>
 
 </p-sidebar>
-<p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="30000">
-    <div class="panel-header">
-        <div class="d-flex justify-content-between align-items-center w-100 p-2">
-            <h5 class="text-white px-3 py-4 m-0">Change Status - John Doe</h5>
-            <a class="p-2" (click)="closeNavBar()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
-                    <path
-                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
-                </svg></a>
 
-        </div>
-    </div>
-    <div class="d-flex flex-column py-3 px-4">
-        <div class="form-group row">
-            <label for="Plan Type" class="col-md-4 col-form-label">Status</label>
-            <div class="col-md-7 drp-styles ">
-
-                <select name="status" class="form-select" (change)="selectStatusType($event)">
-                    <option *ngFor="let statusVal of status" [value]="statusVal.value">
-                        {{statusVal.label}}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
-            <div class="col-lg-7  border-styles">
-                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-end mt-4">
-        <button type="button" class="btn btn-default rounded-pill me-3" (click)="closeNavBar()">Cancel</button>
-        <button type="button" class="btn btn-primary rounded-pill me-2">Submit</button>
-    </div>
-</p-sidebar>
 <p-sidebar [(visible)]="visibleSidebar3" position="right" [baseZIndex]="30000">
     <div class="panel-header">
 

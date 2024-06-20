@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { User, RegUser } from 'src/app/models/users.model';
+import { User, ModifyUser, RegisterUser } from 'src/app/models/users.model';
 import { UsersService } from '../../services/users.service';
 interface PageEvent {
   first?: any;
@@ -19,8 +19,10 @@ interface PageEvent {
 })
 export class UsersComponent {
   modifyUserForm!: FormGroup;
+  registerUserForm!:FormGroup;
   userDatasource: User[]=[];
   selectRoleOption: any = "Administrator";
+  selectDepartmentOption:any="Quality Control";
   dataresp: any = [];
   first: number = 0;
   rows: number = 10;
@@ -41,6 +43,16 @@ export class UsersComponent {
       email: ['', Validators.required]
     
     });
+    this.registerUserForm = this.fb.group({
+      userId: ['', Validators.required],
+      role: ['', Validators.required],
+      department: ['', Validators.required],
+      employeeId: ['', Validators.required],
+      email: ['', Validators.required],
+      passwordAlloted: ['', Validators.required],
+      retypePassword: ['', Validators.required]
+    
+    });
     this.userService.getUserData().subscribe((data: any) => {
       this.userDatasource = data;
       this.userDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
@@ -51,7 +63,10 @@ export class UsersComponent {
     { name: 'Administrator', code: 'Administrator' },
     { name: 'Reviewer ', code: 'Reviewer' }
    ]
-
+   departmentDetails=[
+    { name: 'Quality Control', code: 'Quality Control' },
+    { name: 'Quality Assurance', code: 'Quality Assurance' }
+   ]
   
  
 
@@ -72,6 +87,10 @@ export class UsersComponent {
     this.selectRoleOption = event.target.value;
     this.cdr.detectChanges();
    }
+   selectDepartment(event:any){
+    this.selectDepartmentOption = event.target.value;
+    this.cdr.detectChanges();
+   }
 
 
   onPageChange(event: PageEvent) {
@@ -79,12 +98,12 @@ export class UsersComponent {
     this.rows = event.rows;
   }
   visibleSidebar: any;
-  visibleSidebar2:any;
+  
   visibleSidebar3:any;
   closeNavBar() {
     this.visibleSidebar = false;
-    this.visibleSidebar2 = false;
-    this.visibleSidebar2 = false;
+    
+    this.visibleSidebar3 = false;
   }
   regModifyUser() {
     if (this.modifyUserForm.invalid) {
@@ -93,7 +112,7 @@ export class UsersComponent {
     } else {
 
 
-      const regUser: RegUser = {
+      const modifyUser: ModifyUser = {
         userId: this.modifyUserForm.value.userId,
         role: this.modifyUserForm.value.role,
         department: this.modifyUserForm.value.department,
@@ -102,8 +121,30 @@ export class UsersComponent {
       };
 
       
-      console.log('Form submitted!', regUser);
+      console.log('Form submitted!', modifyUser);
       this.messageService.add({ severity: 'success', summary: ' User Modified Successfully', detail: 'Message Content' });
+    }
+  }
+  regUser() {
+    if (this.registerUserForm.invalid) {
+      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
+      return; // Prevent form submission
+    } else {
+
+
+      const registerUser: RegisterUser = {
+        userId: this.registerUserForm.value.userId,
+        role: this.registerUserForm.value.role,
+        department: this.registerUserForm.value.department,
+        employeeId: this.registerUserForm.value.employeeId,
+        email: this.registerUserForm.value.email,
+        passwordAlloted: this.registerUserForm.value.passwordAlloted,
+        retypePassword: this.registerUserForm.value.retypePassword
+      };
+
+      
+      console.log('Form submitted!', registerUser);
+      this.messageService.add({ severity: 'success', summary: ' User Registered Successfully', detail: 'Message Content' });
     }
   }
   selectStatusType(event:any){

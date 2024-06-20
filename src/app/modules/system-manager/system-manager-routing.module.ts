@@ -8,6 +8,7 @@ import { UsersComponent } from './components/users/users.component';
 import { RegLoginPasswordComponent } from './reg-login-password/reg-login-password.component';
 import { UserActivationComponent } from './components/user-activation/user-activation.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { UserStatusChangeComponent } from './components/user-status-change/user-status-change.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'reset-pwd',component:RegLoginPasswordComponent,canActivate: [AuthGuard]},
   {path:'newUserActivation',component:UserActivationComponent,canActivate: [AuthGuard]},
   {path:'departments',component:DepartmentsComponent,canActivate: [AuthGuard]},
+  {path:'userStatusChange',component:UserStatusChangeComponent,canActivate: [AuthGuard]},
   
 ];
 

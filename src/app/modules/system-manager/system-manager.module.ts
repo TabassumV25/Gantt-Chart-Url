@@ -20,6 +20,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegLoginPasswordComponent } from './reg-login-password/reg-login-password.component';
 import { UserActivationComponent } from './components/user-activation/user-activation.component';
+import { UserStatusChangeComponent } from './components/user-status-change/user-status-change.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UserActivationComponent } from './components/user-activation/user-activ
        UsersComponent,
        DepartmentsComponent,
        RegLoginPasswordComponent,
-       UserActivationComponent
+       UserActivationComponent,
+       UserStatusChangeComponent
   ],
   imports: [
     CommonModule,

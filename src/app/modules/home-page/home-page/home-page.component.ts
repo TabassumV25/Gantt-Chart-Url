@@ -23,7 +23,21 @@ export class HomePageComponent implements OnInit{
       path: '/projects',
       isOpen: false,
       isActive: false,
-      iconClass: 'bi bi-palette2',
+      iconClass: 'fa-solid fa-diagram-project'
+    },
+    {
+      label: 'Gantt Chart',
+      path: '',
+      isOpen: false,
+      isActive: false,
+      iconClass: 'fa-solid fa-chart-gantt'
+    },
+    {
+      label: 'System Manager',
+      path: '/',
+      isOpen: false,
+      isActive: false,
+      iconClass: 'bi bi-database-up'
     },
   ];
 

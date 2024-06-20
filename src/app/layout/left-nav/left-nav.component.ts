@@ -38,7 +38,7 @@ export class LeftNavComponent {
         path: 'projects',
         isOpen: false,
         isActive: false,
-        iconClass: 'bi bi-palette2',
+        iconClass: 'fa-solid fa-diagram-project',
   
       },
       {
@@ -46,7 +46,7 @@ export class LeftNavComponent {
         path: '/gantt-chart',
         isOpen: false,
         isActive: false,
-        iconClass: 'bi bi-palette2',
+        iconClass: 'fa-solid fa-chart-gantt',
   
       }
     ],
@@ -74,6 +74,21 @@ export class LeftNavComponent {
           isActive: false,
           iconClass: 'bi bi-person',
         },
+        {
+          label: 'New User Activation',
+          path: '/newUserActivation',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'fa-solid fa-user-check',
+        },
+        {
+          label: 'User Account Status Change',
+          path: '/userStatusChange',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'fa-solid fa-user-clock',
+        },
+
 
         // {
         //   label: 'Set Functional Profile',
