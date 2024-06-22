@@ -34,10 +34,73 @@ export class HomePageComponent implements OnInit{
     },
     {
       label: 'System Manager',
-      path: '/',
+      path: '',
       isOpen: false,
       isActive: false,
-      iconClass: 'bi bi-database-up'
+      iconClass: 'bi bi-database-up',
+      children: [
+        {
+          label: 'Roles',
+          path: '/roles',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'fa fa-cogs',
+        },
+        {
+          label: 'Users',
+          path: '/users',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'bi bi-person',
+        },
+
+       
+
+        
+        
+       
+         {
+           label: 'User Status Settings',
+          path: '/userStatusChange',
+          isOpen: false,
+         isActive: false,
+         iconClass: 'fa-solid fa-user-clockt',
+         },
+         {
+          label: 'New User Account Activation',
+         path: '/newUserActivation',
+         isOpen: false,
+        isActive: false,
+        iconClass: 'fa-solid fa-user-check',
+        },
+        // {
+        //   label: 'Reset Passwords',
+        //   path: '/home',
+        //   isOpen: false,
+        //   isActive: false,
+        //   iconClass: 'bi bi-house-door',
+        // },
+        {
+          label: 'Departments',
+          path: '/departments',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'bi bi-buildings',
+        },
+       
+       
+       
+        
+       
+        {
+          label: 'Security Settings',
+          path: '/security-settings',
+          isOpen: false,
+          isActive: false,
+          iconClass: 'fa fa-shield',
+        },
+       
+      ]
     },
   ];
 
